@@ -23,8 +23,14 @@ def post():
     return render_template('post.html', name=name, title=name)
   if request.method == 'POST':
     content = request.form['content']
-    print(content)
-    return redirect(url_for('result'))
+    words = content.split()
+    stats ={
+      'characters': len(content),
+      'words': len(words),
+      'lines': len(content.splitlines()),
+      'unique_words': len(set(w.lower().strip('.,!?;:"\'()') for w in words))
+    }
+    return render_template('result.html', content=content, stats=stats, title='Result')
 
 if __name__ == '__main__':
   #for deployment we use the environ

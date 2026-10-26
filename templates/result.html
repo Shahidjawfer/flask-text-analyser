@@ -1,0 +1,14 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="container">
+  <h1>Text Analysis Result</h1>
+  <ul>
+    <li>Characters: {{ stats.characters }}</li>
+    <li>Words: {{ stats.words }}</li>
+    <li>Unique words: {{ stats.unique_words }}</li>
+    <li>Lines: {{ stats.lines }}</li>
+  </ul>
+  <h2>Your text</h2>
+  <p>{{ content }}</p>
+  <a class="btn" href="{{ url_for('post') }}">Analyse another text</a>
+</div>
+{% endblock %}
