@@ -22,7 +22,7 @@ def post():
   if request.method == 'GET':
     return render_template('post.html', name=name, title=name)
   if request.method == 'POST':
-    content = request.form['content']
+    content = request.form['content'].strip()
     words = content.split()
     stats ={
       'characters': len(content),
